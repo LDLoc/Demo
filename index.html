@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body>
+<div class="main" id="main">
+
+    <form action="" method="POST" class="form-1" id="form-1">
+        <h3 class="heading">Đăng ký member</h3>
+        <p class="desc">Hãy tham gia cùng với chúng mình nhé ^^</p>
+
+        <div class="spacer"></div>
+
+        <div class="form-group invalid" id="form-group">
+            <label for="fullname" class="form-label">Tên đầy đủ</label>
+            <br>
+            <input type="text" placeholder="VD:Lê Đức Lộc" name="fullname" id="fullname">
+            <br>
+            <span class="form-message"></span>
+        </div>
+
+        <div class="form-group invalid" id="form-group2">
+            <label for="email" class="form-label">Email</label>
+           <br>
+            <input type="text" placeholder="VD:abc123@gmail.com" name="email" id="email">
+            <br>
+            <span class="form-message"></span>
+        </div>
+
+        <div class="form-group invalid" id="form-group3">
+            <label for="password" class="form-label">Đặt mật khẩu</label>
+            <br>
+            <input type="text" placeholder="Nhập mật khẩu" name="password" id="password">
+            <br>
+            <span class="form-message"></span>
+        </div>
+
+        <div class="form-group invalid" id="form-group4">
+            <label for="password-confirmation" class="form-label">Xác nhận mật khẩu</label>
+            <br>
+            <input type="text" placeholder="Nhập lại mật khẩu" name="password-confirmation" id="password-confirmation">
+            <br>
+            <span class="form-message"></span>
+        </div>
+
+        <button onclick="Differ()" class="form-submit">Đăng ký</button>
+
+    </form>
+
+
+</div>
+
+     <!-- Success -->
+<div class="container">
+    <div id="toast-success">
+        <div class="container-success">
+            <i class="fas fa-check-square"></i>
+        </div>
+        <div class="container-2">
+            <p>Success</p>
+            <p>Chúc mừng bạn đã trở thành 1 member <3 </p>
+        </div>
+        <button id="close" onclick="closeToast()">
+            &times;
+        </button>
+    </div>
+</div>
+     <!-- Error -->
+    <div class="container">
+        <div id="toast-error">
+            <div class="container-error">
+                <i class="fas fa-xmark-square"></i>
+            </div>
+            <div class="container-2">
+                <p>Error</p>
+                <p>Vui lòng điền đủ thông tin </p>
+            </div>
+            <button id="close" onclick="closeToast()">
+                &times;
+            </button>
+        </div>
+    </div>
+
+
+    <script src="./validator.js"></script>
+    <script>
+        Validator ({
+            form:'#form-1',
+            rules: [
+                Validator.isRequired('#fullname'),
+                Validator.isEmail('#email'),
+                Validator.minLength('#password', 7),
+                Validator.compare('#password-confirmation', function () {
+                    return document.querySelector('#form-1 #password').value;
+                }),
+            ]
+            
+        });
+
+    </script>
+    <script>
+        function Differ() {
+                if (document.getElementById("form-group").classList.contains('invalid') ||
+                document.getElementById("form-group2").classList.contains('invalid') ||
+                document.getElementById("form-group3").classList.contains('invalid') ||
+                document.getElementById("form-group4").classList.contains('invalid') 
+                    ) {
+                    return showToastError(),
+                    document.getElementByClassName($('div[class*="invalid"]')).className="fail"
+                } else {
+                    return showToastSuccess();
+                }
+            }
+            
+    </script>
+</body>
+
+</html>
+
