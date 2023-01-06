@@ -22,7 +22,7 @@
 
         <div class="spacer"></div>
 
-        <div class="form-group invalid" id="form-group">
+        <div class="form-group" id="form-group">
             <label for="fullname" class="form-label">Tên đầy đủ</label>
             <br>
             <input type="text" placeholder="VD:Lê Đức Lộc" name="fullname" id="fullname">
@@ -30,7 +30,7 @@
             <span class="form-message"></span>
         </div>
 
-        <div class="form-group invalid" id="form-group2">
+        <div class="form-group" id="form-group2">
             <label for="email" class="form-label">Email</label>
            <br>
             <input type="text" placeholder="VD:abc123@gmail.com" name="email" id="email">
@@ -38,7 +38,7 @@
             <span class="form-message"></span>
         </div>
 
-        <div class="form-group invalid" id="form-group3">
+        <div class="form-group" id="form-group3">
             <label for="password" class="form-label">Đặt mật khẩu</label>
             <br>
             <input type="text" placeholder="Nhập mật khẩu" name="password" id="password">
@@ -46,7 +46,7 @@
             <span class="form-message"></span>
         </div>
 
-        <div class="form-group invalid" id="form-group4">
+        <div class="form-group" id="form-group4">
             <label for="password-confirmation" class="form-label">Xác nhận mật khẩu</label>
             <br>
             <input type="text" placeholder="Nhập lại mật khẩu" name="password-confirmation" id="password-confirmation">
@@ -111,15 +111,14 @@
     </script>
     <script>
         function Differ() {
-                if (document.getElementById("form-group").classList.contains('invalid') ||
-                document.getElementById("form-group2").classList.contains('invalid') ||
-                document.getElementById("form-group3").classList.contains('invalid') ||
-                document.getElementById("form-group4").classList.contains('invalid') 
+                if (document.getElementById("form-group").classList.contains('success') &&
+                document.getElementById("form-group2").classList.contains('success') &&
+                document.getElementById("form-group3").classList.contains('success') &&
+                document.getElementById("form-group4").classList.contains('success') 
                     ) {
-                    return showToastError(),
-                    document.getElementByClassName($('div[class*="invalid"]')).className="fail"
-                } else {
-                    return showToastSuccess();
+                        return showToastSuccess();
+                    } else {
+                        return showToastError();
                 }
             }
             
