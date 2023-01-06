@@ -9,6 +9,7 @@ function Validator(options) {
             errorElement.innerText = errorMessage;
             inputElement.parentElement.classList.add('invalid');
             errorElement.style.color = '#ff632d'
+            inputElement.parentElement.classList.remove('success');
         } else {
             errorElement.innerText = ""
             inputElement.parentElement.classList.remove('invalid');
